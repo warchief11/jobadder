@@ -1,0 +1,13 @@
+<div>
+  <div class="list-item mb-3 clickable" *ngFor="let job of (jobs$ | async)" (click)="selectJob(job)">
+    <div>
+      {{job.jobId}} - {{job.name}}
+    </div>
+    <div>
+      <b>{{job.company}}</b>
+    </div>
+    <div>
+      {{job.skills}}
+    </div>
+  </div>
+</div>
