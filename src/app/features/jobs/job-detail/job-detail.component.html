@@ -9,3 +9,15 @@
     <b>Skills: </b>{{job.skills}}
   </div>
 </div>
+<div class="card" *ngFor="let matchingCandidate of (matchingCandidates$ | async)">
+  <div class="card-header">{{matchingCandidate.candidateName}}</div>
+  <div class="card-body">
+    {{matchingCandidate.matchingSkillCount}} skills matched out of {{skillsRequired.length}} skills.
+    <div class="row">
+      <div class="col" *ngFor="let skillTag of matchingCandidate.skills" [ngClass]="{'matching-skill': skillTag.isMatch}">
+        {{skillTag.name}}
+      </div>
+    </div>
+
+  </div>
+</div>

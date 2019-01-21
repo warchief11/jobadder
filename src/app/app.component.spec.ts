@@ -1,11 +1,20 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {  RouterTestingModule} from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      imports: [
+        FormsModule,
+        HttpClientModule,
+        RouterTestingModule
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
@@ -22,6 +31,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to jobadder!');
+    expect(compiled.querySelector('a.navbar-brand').textContent).toContain('JobAdder');
   }));
 });

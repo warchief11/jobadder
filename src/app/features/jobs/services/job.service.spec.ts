@@ -1,11 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { JobService } from './job.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 describe('JobService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [JobService]
+      providers: [JobService],
+      imports: [
+        HttpClientModule,
+      ]
     });
   });
 

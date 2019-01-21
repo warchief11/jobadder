@@ -1,3 +1,5 @@
+import { CandidateMatchSequentialService } from './features/jobs/services/candidate-match-sequential.service';
+import { CandidateMatcher } from './features/jobs/services/candidate-matcher';
 import { JobDetailResolver } from './features/jobs/job-detail/job-detail.resolver';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -28,7 +30,9 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [
+   // {provide: 'CandidateMatcher', useClass: CandidateMatchSequentialService}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

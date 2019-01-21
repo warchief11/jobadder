@@ -1,10 +1,10 @@
-import { Candidate } from '../../model/candidate';
-import { CandidateSerivce } from '../candidates/candidate.service';
+import { Candidate } from './../../../model/candidate';
+import { Job } from './../job';
+import { ApiService } from './../../../shared/api.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiService } from '../../shared/api.service';
-import { Job } from './job';
+import { CandidateSerivce } from '../../candidates/candidate.service';
 
 
 @Injectable({
@@ -25,10 +25,5 @@ export class JobService {
     return this.getJobs().pipe(map(x => x.find(j => j.jobId === jobId)));
     // return this.apiService.get<Job>(`job/${jobId}`);
   }
-
-  getMatchingCandidates(jobId: number): Observable<Candidate[]> {
-    return this.candidateService.getCandidates();
-  }
-
 }
 

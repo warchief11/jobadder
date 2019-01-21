@@ -5,7 +5,7 @@ export class MatchingCandidate {
   candidateId: number;
   candidateName: string;
   skills: { name: string, isMatch: boolean }[];
-
+  matchingSkillCount: number;
 }
 
 export interface CandidateMatcher {
