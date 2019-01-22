@@ -6,8 +6,8 @@
     <b>Skills: </b>{{job.skills}}
   </div>
 </div>
-<div class="p-2">
-  Following candidates have one or more matching skillset required for the job.
+<div class="p-2" *ngIf="matchingCandidates$ | async; let candidates">
+  {{candidates.length}} candidates have one or more matching skillset required for the job.
 </div>
 <div class="row p-2 border" *ngFor="let matchingCandidate of (matchingCandidates$ | async)">
   <div class="col-12 col-sm-2">

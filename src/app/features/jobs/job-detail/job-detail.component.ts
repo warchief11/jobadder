@@ -10,14 +10,14 @@ import { CandidateMatchSequentialService } from '../services/candidate-match-seq
 @Component({
   selector: 'app-job-detail',
   templateUrl: './job-detail.component.html',
-  styleUrls: ['./job-detail.component.scss']
+  styleUrls: ['./job-detail.component.scss'],
 })
 export class JobDetailComponent implements OnInit {
   @Input() job: Job;
 
   matchingCandidates$: Observable<MatchingCandidate[]>;
   constructor(private route: ActivatedRoute,
-    private candidateMatcher: CandidateMatchSequentialService) { }
+    private candidateMatcher: CandidateMatcher) { }
 
   ngOnInit() {
     this.job = this.route.snapshot.data.pageData;

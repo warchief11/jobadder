@@ -31,7 +31,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
   ],
   providers: [
-   // {provide: 'CandidateMatcher', useClass: CandidateMatchSequentialService}
+    CandidateMatchSequentialService,
+    { provide: CandidateMatcher, useClass: CandidateMatchSequentialService }
   ],
   bootstrap: [AppComponent]
 })

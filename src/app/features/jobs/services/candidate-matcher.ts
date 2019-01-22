@@ -8,6 +8,6 @@ export class MatchingCandidate {
   matchingSkillCount: number;
 }
 
-export interface CandidateMatcher {
-  findCandidates(sourceSkills: string[]): Observable<MatchingCandidate[]>;
+export abstract class CandidateMatcher {
+  abstract findCandidates(sourceSkills: string[]): Observable<MatchingCandidate[]>;
 }
