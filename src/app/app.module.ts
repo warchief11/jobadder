@@ -22,7 +22,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     JobListComponent,
-    JobDetailComponent
+    JobDetailComponent,
   ],
   imports: [
     BrowserModule,

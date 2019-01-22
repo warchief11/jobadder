@@ -1,3 +1,9 @@
-.matching-skill{
-background-color: aliceblue;
+@import '../../../../styles.scss';
+
+.matching-skill {
+  background-color: $color-secondary;
+}
+
+.sticky-top {
+  top: 56px;
 }

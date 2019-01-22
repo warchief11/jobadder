@@ -17,7 +17,10 @@ export class JobService {
 
   getJobs(): Observable<Job[]> {
     console.log('getting jobs');
-    return this.apiService.get<Job[]>('jobs');
+    return this.apiService.get<any>('jobs').pipe(map(data => data.map(j => {
+      j.skills = j.skills.split(',');
+      return j;
+    })));
   }
 
   getJob(jobId: number): Observable<Job> {

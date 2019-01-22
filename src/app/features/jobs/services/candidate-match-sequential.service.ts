@@ -22,13 +22,15 @@ export class CandidateMatchSequentialService implements CandidateMatcher {
           const matchingCandidate = new MatchingCandidate();
           matchingCandidate.candidateId = candidate.candidateId;
           matchingCandidate.candidateName = candidate.name;
-          matchingCandidate.skills = candidate.skillTags.map(tag => {
+          matchingCandidate.skills = candidate.skillTags.filter((tag, pos, self) => {  //remove duplicate skills
+            return self.indexOf(tag) === pos;
+          }).map(tag => {
             const skill = { name: tag, isMatch: false };
             if (sourceSkills.find(stag => stag.trim().toLowerCase() === tag.trim().toLowerCase())) {
               skill.isMatch = true;
             }
             return skill;
-          });
+          })
 
           matchingCandidate.matchingSkillCount = matchingCandidate.skills.filter(x => x.isMatch).length;
           if (matchingCandidate.matchingSkillCount > 0) {
@@ -36,7 +38,7 @@ export class CandidateMatchSequentialService implements CandidateMatcher {
           }
         });
 
-        matchingCandidates.sort((a: MatchingCandidate, b: MatchingCandidate) =>  b.matchingSkillCount - a.matchingSkillCount);
+        matchingCandidates.sort((a: MatchingCandidate, b: MatchingCandidate) => b.matchingSkillCount - a.matchingSkillCount);
         return matchingCandidates;
       }));
   }

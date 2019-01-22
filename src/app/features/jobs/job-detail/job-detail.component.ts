@@ -15,16 +15,13 @@ import { CandidateMatchSequentialService } from '../services/candidate-match-seq
 export class JobDetailComponent implements OnInit {
   @Input() job: Job;
 
-  get skillsRequired(): string[] {
-    return this.job.skills.split(',');
-  }
   matchingCandidates$: Observable<MatchingCandidate[]>;
   constructor(private route: ActivatedRoute,
     private candidateMatcher: CandidateMatchSequentialService) { }
 
   ngOnInit() {
     this.job = this.route.snapshot.data.pageData;
-    this.matchingCandidates$ = this.candidateMatcher.findCandidates(this.skillsRequired);
+    this.matchingCandidates$ = this.candidateMatcher.findCandidates(this.job.skills);
   }
 
 }

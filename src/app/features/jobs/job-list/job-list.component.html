@@ -1,13 +1,10 @@
 <div>
-  <div class="list-item mb-3 clickable" *ngFor="let job of (jobs$ | async)" (click)="selectJob(job)">
-    <div>
-      {{job.jobId}} - {{job.name}}
-    </div>
-    <div>
-      <b>{{job.company}}</b>
-    </div>
-    <div>
-      {{job.skills}}
+  <div class="row p-2 border clickable" *ngFor="let job of (jobs$ | async)" (click)="selectJob(job)">
+    <div class="col-auto col-sm-3">{{job.jobId}} - {{job.name}} @ {{job.company}}</div>
+    <div class="col row">
+      <div class="col-auto" *ngFor="let skillTag of job.skills">
+          {{skillTag}}
+      </div>
     </div>
   </div>
 </div>

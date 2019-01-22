@@ -84,13 +84,22 @@ describe('CandidateMatchSequentialService', () => {
         });
     }));
 
-  it('should not candidates with descending order of matching skills',
+  it('should return candidates with descending order of matching skills',
     inject([CandidateMatchSequentialService], (service: CandidateMatchSequentialService) => {
       const sourceSkills = ['reliable', 'teamplayer', 'gardening'];
       const actualMatchingCandidates = service.findCandidates(sourceSkills)
         .subscribe(actual => {
           expect(actual[0].candidateId).toBe(1);
           expect(actual[1].candidateId).toBe(2);
+        });
+    }));
+
+    it('should not count duplicate skills twice',
+    inject([CandidateMatchSequentialService], (service: CandidateMatchSequentialService) => {
+      const sourceSkills = ['reliable', 'teamplayer', 'gardening'];
+      const actualMatchingCandidates = service.findCandidates(sourceSkills)
+        .subscribe(actual => {
+          expect(actual[1].matchingSkillCount).toBe(1);
         });
     }));
 
